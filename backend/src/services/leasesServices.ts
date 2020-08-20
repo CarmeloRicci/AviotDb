@@ -13,7 +13,7 @@ export default class LeasesServices {
 
     async NewLeasesReceiver(data: any){
         console.log('leasesServices received from ' + data.TenantId + ' leases: ' + data.leases)
-        let exists = tenantStore.findById(data.TenantId)
+        let exists = tenantStore.findById(1)
         console.log(exists)
     }
 }
