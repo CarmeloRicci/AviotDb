@@ -1,4 +1,4 @@
-import { ITenant, ISearchOpt } from '../interfaces/interfaces';
+import { ITenant } from '../interfaces/interfaces';
 const _ = require('lodash');
 //const moment = require('moment');
 const config = require('../../../backend/knexfile');
