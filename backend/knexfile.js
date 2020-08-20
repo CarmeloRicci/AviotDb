@@ -8,7 +8,7 @@ module.exports = {
     connection: {
         host: '172.19.0.2',
         user: 'melo',
-        password: 'smelo',
+        password: 'melo',
         database: 'aviot'
     }
   },
@@ -18,7 +18,7 @@ module.exports = {
     connection: {
         host: '172.19.0.2',
         user: 'melo',
-        password: 'smelo',
+        password: 'melo',
         database: 'aviot'
     }
   },
@@ -28,7 +28,7 @@ module.exports = {
     connection: {
         host: '172.19.0.2',
         user: 'melo',
-        password: 'smelo',
+        password: 'melo',
         database: 'aviot'
     }
   }
