@@ -5,6 +5,8 @@ const router = express.Router();
 import * as HttpStatus from 'http-status-codes';
 const delay = require('delay');
 
+import LeasesService from '../services/leasesServices';
+const leasesService = new LeasesService();
 
 router.post('/refresh', async (req, res) => {
     const body = req.body;
@@ -12,6 +14,7 @@ router.post('/refresh', async (req, res) => {
     try {
         const params = body && body.params ? body.params : null;
         console.log("leasesRoutes received("+ip+"): ","PARAMS", params);
+        leasesService.NewLeasesReceiver(params);
         res.status(HttpStatus.OK).send();
     } catch (error) {
         res.status(HttpStatus.OK).send(error);
