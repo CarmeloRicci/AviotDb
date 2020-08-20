@@ -33,18 +33,18 @@ export default class TenantStore {
     //     return knex('Tenant').where({ id }).del();
     // }
 
-    findById(id: number): any {
+    async findById(id: number): any {
         //return knex('Tenant').select('*').where({ id });
 
-        knex.from('Tenant').select("*")
+        await knex.from('Tenant').select("*")
             .then((rows:any) => {
-                for (let row of rows) {
-                    //console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
-                    console.log(`${row}`);
+                 for (let row of rows) {
+                     console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
+                    //console.log(`${row}`);
                 }
             }).catch((err: any) => { console.log(err); throw err })
             .finally(() => {
-                knex.destroy();
+                 knex.destroy();
             });
 
             return "fine";
