@@ -10,7 +10,8 @@ module.exports = {
         user: 'melo',
         password: 'melo',
         database: 'Aviot'
-    }
+    },
+    useNullAsDefault: true
   },
   
   staging: {
@@ -20,7 +21,8 @@ module.exports = {
         user: 'melo',
         password: 'melo',
         database: 'Aviot'
-    }
+    },
+    useNullAsDefault: true
   },
 
   production: {
@@ -30,7 +32,8 @@ module.exports = {
         user: 'melo',
         password: 'melo',
         database: 'Aviot'
-    }
+    },
+    useNullAsDefault: true
   }
 };
 
