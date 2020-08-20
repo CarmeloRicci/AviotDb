@@ -6,7 +6,7 @@ import * as HttpStatus from 'http-status-codes';
 const delay = require('delay');
 
 
-router.post('/leases', async (req, res) => {
+router.post('/refresh', async (req, res) => {
     const body = req.body;
     var ip = req.connection.remoteAddress.split(":")[((req.connection.remoteAddress.split(":")).length)-1]
     try {
