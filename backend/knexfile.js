@@ -9,7 +9,7 @@ module.exports = {
         host: '172.19.0.2',
         user: 'melo',
         password: 'melo',
-        database: 'aviot'
+        database: 'Aviot'
     }
   },
   
@@ -19,7 +19,7 @@ module.exports = {
         host: '172.19.0.2',
         user: 'melo',
         password: 'melo',
-        database: 'aviot'
+        database: 'Aviot'
     }
   },
 
@@ -29,7 +29,7 @@ module.exports = {
         host: '172.19.0.2',
         user: 'melo',
         password: 'melo',
-        database: 'aviot'
+        database: 'Aviot'
     }
   }
 };
