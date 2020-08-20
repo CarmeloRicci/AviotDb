@@ -24,7 +24,7 @@ export default class TenantStore {
     findById(id: number): any {
         //return knex('Tenant').select('*').where({ id });
 
-        knex.from('Tenant').select("*").where('Tenant_id', '==', id)
+        knex.from('Tenant').select("*")
             .then((rows:any) => {
                 for (let row of rows) {
                     console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
