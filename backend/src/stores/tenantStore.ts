@@ -1,6 +1,6 @@
 import { ITenant, ISearchOpt } from '../interfaces/interfaces';
 const _ = require('lodash');
-const moment = require('moment');
+//const moment = require('moment');
 const config = require('../../../backend/knexfile');
 const knex = require('knex')(config[process.env.NODE_ENV]);
 
@@ -12,9 +12,9 @@ export default class TenantStore {
     }
 
     update(tenant: ITenant) {
-        const date = new Date(moment().format()).toISOString();
-        tenant.updated_at = date;
-        return knex('Tenant').where({ id: tenant.id }).update(tenant);
+        //const date = new Date(moment().format()).toISOString();
+        //tenant.updated_at = date;
+        //return knex('Tenant').where({ id: tenant.id }).update(tenant);
     }
 
     delete(id: number) {
