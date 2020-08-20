@@ -1,7 +1,7 @@
 import { ITenant } from '../interfaces/interfaces';
 const _ = require('lodash');
 //const moment = require('moment');
-const config = require('../../../backend/knexfile');
+const config = require('../../knexfile');
 const knex = require('knex')(config[process.env.NODE_ENV]);
 
 export default class TenantStore {
