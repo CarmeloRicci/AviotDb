@@ -4,6 +4,18 @@ const _ = require('lodash');
 const config = require('../../../backend/knexfile');
 const knex = require('knex')(config[process.env.NODE_ENV]);
 
+
+// var knex = require('knex')({
+//   client: 'mysql',
+//   connection: {
+//     host : '172.18.0.2',
+//     user : 'melo',
+//     password : 'melo',
+//     database : 'test'
+//   }
+// });
+
+
 export default class TenantStore {
     constructor() { }
 
