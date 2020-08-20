@@ -39,8 +39,8 @@ export default class TenantStore {
         knex.from('Tenant').select("*")
             .then((rows:any) => {
                 for (let row of rows) {
-                    console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
-                    //console.log(`${row}`);
+                    //console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
+                    console.log(`${row}`);
                 }
             }).catch((err: any) => { console.log(err); throw err })
             .finally(() => {
