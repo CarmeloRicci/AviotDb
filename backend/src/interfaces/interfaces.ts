@@ -11,3 +11,11 @@ export interface FormatLeases {
     host: string;
     id: string;
 }
+
+export interface ITenant {
+    Tenant_id: number;
+    Name: string;
+    Description: string;
+    Application_id: number;
+    Created_at: string;
+}
