@@ -15,7 +15,9 @@ export default class LeasesServices {
         console.log('leasesServices received from ' + data.TenantId + ' leases: ' + data.leases)
         //let exists = tenantStore.findById(1)
 
-        const deviceResponse = await tenantStore.findById(1);
-        console.log(deviceResponse)
+        await tenantStore.melo1();
+
+        //const deviceResponse = await tenantStore.findById(1);
+        //console.log(deviceResponse)
     }
 }

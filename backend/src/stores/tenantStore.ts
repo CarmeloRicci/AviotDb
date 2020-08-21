@@ -33,7 +33,19 @@ export default class TenantStore {
     //     return knex('Tenant').where({ id }).del();
     // }
 
-    async findById(id: number): any {
+    melo1 (){
+
+        knex ('User') 
+        .where ({ 
+          User_id: 1 
+        }) 
+        .select ('id')
+
+    }
+
+
+
+    async findById(id: number) {
         //return knex('Tenant').select('*').where({ id });
 
         await knex.from('Tenant').select("*")
