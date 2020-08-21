@@ -35,7 +35,7 @@ export default class TenantStore {
 
     melo1 (){
 
-        knex ('User') 
+        return knex ('User') 
         .where ({ 
           User_id: 1 
         }) 
