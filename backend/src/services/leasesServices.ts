@@ -79,7 +79,7 @@ export default class LeasesServices {
         }
         else{
             console.log("Il Dispositivo ha un nuovo indirizzo ip, prendo il vecchio hostname e lo metto in quello nuovo")
-            this.UpdateIpDevice(temp,leases.ip)
+            await this.UpdateIpDevice(temp,leases.ip)
         }
     }
 
