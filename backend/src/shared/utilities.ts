@@ -38,6 +38,14 @@ export class Utilities {
         fs.appendFileSync(cfg.general.path_to_log, Date.now() + " -> " + request_data + "\n");
     }
 
+    static logSuccess(request_data: any): any {
+        fs.appendFileSync(cfg.general.path_to_log_ok, Date.now() + " -> " + request_data + "\n");
+    }
+
+    static logError(request_data: any): any {
+        fs.appendFileSync(cfg.general.path_to_log_err, Date.now() + " -> " + request_data + "\n");
+    }
+
 
 
 
