@@ -67,7 +67,7 @@ export default class LeasesServices {
         let temp: IDevice
         temp = await deviceStore.findByMacAndIp(leases.mac, leases.ip)
 
-console.log("->>>>" + temp)
+console.log("->>>>" + temp.Device_id + temp.Ip + temp.Mac)
         // temp={Device_id: 0, Tenant_id: TenandId, Nome: leases.host, Ip: leases.ip, Mac: leases.mac}
         // await deviceStore.create(temp)
     }
