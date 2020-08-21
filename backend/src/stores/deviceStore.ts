@@ -29,7 +29,7 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
         return knex('Devices')
             .where({ Ip: ip
              })
-             .select('*');
+             .select('*')
     }
 
 //     findBy(device: IDevice): any {
