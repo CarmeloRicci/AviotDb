@@ -39,7 +39,7 @@ export default class TenantStore {
         .where ({ 
           User_id: 1 
         }) 
-        .select ('id')
+        .select ('*')
 
     }
 
