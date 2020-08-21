@@ -69,12 +69,12 @@ export default class TenantStore {
     /////////////////////////////// --------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     async TenantExists(id: number) {
-        let status = await this.findById(id)
-        if( status.length == 0 && status ){
-            return 0
+        //let status = await this.findById(id)
+        if( await this.findById(id) ){
+            return 1
         }
         else {
-            return 1
+            return 0
         }
         
     }
