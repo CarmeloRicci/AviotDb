@@ -1,4 +1,5 @@
 import { ITenant } from '../interfaces/interfaces';
+import { stat } from 'fs';
 const _ = require('lodash');
 //const moment = require('moment');
 const config = require('../../../backend/knexfile');
@@ -69,8 +70,9 @@ export default class TenantStore {
     /////////////////////////////// --------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     async TenantExists(id: number) {
-        //let status = await this.findById(id)
-        if( await this.findById(id) ){
+        let status = await this.findById(id)
+        console.log(status + " --> " + status.length)
+        if( status ){
             return 1
         }
         else {
