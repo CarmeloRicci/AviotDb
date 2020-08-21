@@ -50,7 +50,7 @@ export default class DeviceStore {
     }
 
     async update(device: IDevice) {
-        return knex('devices').where({ id: device.Device_id }).update(device)
+        return knex('Devices').where({ id: device.Device_id }).update(device)
     }
 
     //     findBy(device: IDevice): any {

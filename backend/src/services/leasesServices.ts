@@ -73,9 +73,7 @@ export default class LeasesServices {
 
         let temp: IDevice
         let rowdata = await deviceStore.findByMac(leases.mac)
-        console.log(rowdata)
         temp = { Device_id: rowdata[0].Device_id , Tenant_id: rowdata[0].Tenant_id , Nome: rowdata[0].Nome , Ip: rowdata[0].Ip, Mac: rowdata[0].Mac}
-        console.log(temp)
         if (leases.ip == temp.Ip){
             console.log("Dispositivo già presente, passo oltre")
         }
