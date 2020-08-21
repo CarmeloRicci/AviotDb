@@ -33,6 +33,10 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
              .select('*')
     }
 
+    async create(device: IDevice) {
+        return awai tknex('Devices').insert(device).returning('*');
+    }
+
 //     findBy(device: IDevice): any {
 //         return knex('devices').where(device).returning('*');
 //     }

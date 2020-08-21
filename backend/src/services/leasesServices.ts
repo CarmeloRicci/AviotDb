@@ -5,7 +5,7 @@ const fs = require('fs');
 import { Utilities } from '../shared/utilities';
 import _ = require('lodash');
 import { random } from 'lodash';
-import { ILeases } from "../interfaces/interfaces";
+import { ILeases, IDevice } from "../interfaces/interfaces";
 
 import TenantStore from '../stores/tenantStore';
 const tenantStore = new TenantStore();
@@ -19,15 +19,17 @@ export default class LeasesServices {
         //Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
 
-        if (tenantStore.TenantExists(data.TenantId) === 1) {
+        if (tenantStore.TenantExists(data.TenantId) == 1) {
             //console.log('Ok Esiste il tenent');
             let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
 
             for (let i = 0; i < leases.length; i++) {
                 if ( await this.ExistsDevices(leases[i]) == 0 ){
                         console.log ("elemento " + i + " non esiste")
+                        console.log ( this.InsertDevice(leases[i],data.TenantId) )
                     }else{
                         console.log ("elemento " + i + " esiste")
+                        console.log ( await deviceStore.findByMac(leases[i].mac) )
                     }
 
                 }
@@ -39,12 +41,6 @@ export default class LeasesServices {
         }
     }
 
-
-    // async GetLeasesFromArray (raw: any) {
-    //     let temp:ILeases
-    //      temp = { timestamp: raw.timestamp, mac: raw.mac, ip: raw.ip, host: raw.host, id:raw.id };
-    //     return temp
-    // }
     async RawDataToArrayLeases(raw: any) {
         let temp: ILeases[] = raw
         return temp
@@ -59,4 +55,11 @@ export default class LeasesServices {
         }
     }
 
+    async InsertDevice(leases: ILeases, TenandId: any) {
+
+        let temp: IDevice
+        temp={Device_id: 0, Tenant_id: TenandId, Nome: leases.host, Ip: leases.ip, Mac: leases.mac}
+
+        await deviceStore.create(temp)
+    }
 }
