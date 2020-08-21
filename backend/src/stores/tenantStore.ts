@@ -33,33 +33,38 @@ export default class TenantStore {
     //     return knex('Tenant').where({ id }).del();
     // }
 
-    melo1 (){
-
-        return knex ('User') 
-        .where ({ 
-          User_id: 1 
-        }) 
-        .select ('*')
-
-    }
+    // melo1 (){
+    //     return knex ('User') 
+    //     .where ({ 
+    //       User_id: 1 
+    //     }) 
+    //     .select ('*')
+    // }
 
 
 
     async findById(id: number) {
         //return knex('Tenant').select('*').where({ id });
 
-        await knex.from('Tenant').select("*")
-            .then((rows:any) => {
-                 for (let row of rows) {
-                     console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
-                    //console.log(`${row}`);
-                }
-            }).catch((err: any) => { console.log(err); throw err })
-            .finally(() => {
-                 knex.destroy();
-            });
+        return knex ('User')
+            .where ({
+                User_id: id
+            })
+            .select ('*')
 
-            return "fine";
+
+        // await knex.from('Tenant').select("*")
+        //     .then((rows:any) => {
+        //          for (let row of rows) {
+        //              console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
+        //             //console.log(`${row}`);
+        //         }
+        //     }).catch((err: any) => { console.log(err); throw err })
+        //     .finally(() => {
+        //          knex.destroy();
+        //     });
+
+        //     return "fine";
     }
 
     // findBy(tenant: ITenant): any {

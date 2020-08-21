@@ -12,12 +12,8 @@ const tenantStore = new TenantStore();
 export default class LeasesServices {
 
     async NewLeasesReceiver(data: any){
-        //console.log('leasesServices received from ' + data.TenantId + ' leases: ' + data.leases)
-        //let exists = tenantStore.findById(1)
-
-        console.log ( await tenantStore.melo1() );
-
-        //const deviceResponse = await tenantStore.findById(1);
-        //console.log(deviceResponse)
+        console.log('leasesServices received from ' + data.TenantId + ' leases: ' + data.leases)
+        const deviceResponse = await tenantStore.findById(data.leases);
+        console.log(deviceResponse)
     }
 }
