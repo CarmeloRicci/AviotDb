@@ -22,24 +22,24 @@ export default class LeasesServices {
 
         if (tenantStore.TenantExists(data.TenantId) === 1){
             console.log('Ok Esiste');
-            this.ExistsLeases( await this.GetLeasesFromRawData(data.leases.timestamp, data.leases.mac, data.leases.ip, data.leases.host, data.leases.id))
+            //this.ExistsLeases( await this.GetLeasesFromRawData(data.leases.timestamp, data.leases.mac, data.leases.ip, data.leases.host, data.leases.id))
         }else{
             console.log('NON Esiste!!!');
         }
     }
 
 
-    async GetLeasesFromRawData (timestamp:string, mac:string, ip:string, host:string, id:string) {
-        let temp:ILeases;
+    // async GetLeasesFromRawData (timestamp:string, mac:string, ip:string, host:string, id:string) {
+    //     let temp:ILeases;
 
-        temp.timestamp = timestamp;
-        temp.mac = mac;
-        temp.ip = ip;
-        temp.host = host;
-        temp.id = id;
+    //     temp.timestamp = timestamp;
+    //     temp.mac = mac;
+    //     temp.ip = ip;
+    //     temp.host = host;
+    //     temp.id = id;
 
-        return temp
-    }
+    //     return temp
+    // }
     async ExistsLeases (leases: ILeases) {
         console.log( deviceStore.findByLeases(leases.ip,leases.mac) )
     }
