@@ -24,7 +24,7 @@ export default class LeasesServices {
             let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
 
             for (let i = 0; i < leases.length; i++) {
-                if ( await this.ExistsDevices(leases[i]) === 0 ){
+                if ( await this.ExistsDevices(leases[i]) == 0 ){
                         console.log ("elemento " + i + " non esiste")
                     }else{
                         console.log ("elemento " + i + " esiste")
