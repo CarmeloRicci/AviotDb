@@ -11,6 +11,7 @@ import TenantStore from '../stores/tenantStore';
 const tenantStore = new TenantStore();
 
 import DeviceStore from '../stores/deviceStore';
+import { raw } from 'express';
 const deviceStore = new DeviceStore();
 
 export default class LeasesServices {
@@ -65,10 +66,11 @@ export default class LeasesServices {
     async CheckIpDevices(leases: ILeases) {
 
         let temp: IDevice
-        console.log( await deviceStore.findByMacAndIp(leases.mac, leases.ip) )
-        temp = (await deviceStore.findByMacAndIp(leases.mac, leases.ip)).RowDataPacket
-
-console.log("->>>>" + temp.Device_id + temp.Ip + temp.Mac)
+        //console.log( await deviceStore.findByMacAndIp(leases.mac, leases.ip) )
+        let rowdata = await deviceStore.findByMacAndIp(leases.mac, leases.ip)
+        temp = { Device_id: rowdata.RowDataPacket.Device_id , Tenant_id: rowdata.RowDataPacket.Tenant_id , Nome: rowdata.RowDataPacket.Nome , Ip: rowdata.RowDataPacket.Ip, Mac: rowdata.RowDataPacket.Mac}
+        
+    console.log("->>>>" + temp)
         // temp={Device_id: 0, Tenant_id: TenandId, Nome: leases.host, Ip: leases.ip, Mac: leases.mac}
         // await deviceStore.create(temp)
     }
