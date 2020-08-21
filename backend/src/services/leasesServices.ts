@@ -23,7 +23,8 @@ export default class LeasesServices {
             //console.log('Ok Esiste il tenent');
             let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
             leases.forEach(function (item, index) {
-                if (this.ExistsDevices(item) === 0){
+                let temp : ILeases = item
+                if (this.ExistsDevices(temp) === 0){
                     console.log ("elemento " + index + " non esiste")
                 }else{
                     console.log ("elemento " + index + " esiste")
@@ -51,7 +52,7 @@ export default class LeasesServices {
         return temp
     }
 
-    async ExistsDevices(leases: any) {
+    async ExistsDevices(leases: ILeases) {
 
         if (await deviceStore.findByMac(leases.mac)) {
             return await deviceStore.findByMac(leases.mac)
