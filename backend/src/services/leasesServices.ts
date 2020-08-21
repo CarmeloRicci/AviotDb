@@ -18,6 +18,8 @@ export default class LeasesServices {
     async NewLeasesReceiver(data: any){
         //Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
+       console.log(data.leases.timestamp, data.leases.mac, data.leases.ip, data.leases.host, data.leases.id)
+
         if (tenantStore.TenantExists(data.TenantId) === 1){
             console.log('Ok Esiste');
             this.ExistsLeases( await this.GetLeasesFromRawData(data.leases))
