@@ -13,7 +13,7 @@ export default class LeasesServices {
 
     async NewLeasesReceiver(data: any){
         console.log('leasesServices received from ' + data.TenantId + ' leases: ' + data.leases)
-        const deviceResponse = await tenantStore.findById(data.leases);
+        const deviceResponse = await tenantStore.findById(data.TenantId);
         console.log(deviceResponse)
     }
 }
