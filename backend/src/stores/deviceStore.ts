@@ -28,8 +28,8 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
 
     findByLeases(ip:any, mac:any) {
         return knex('Devices')
-            .where({ Device_id: "1"
-             })
+            // .where({ Device_id: "1"
+            //  })
              .select('*')
     }
 
