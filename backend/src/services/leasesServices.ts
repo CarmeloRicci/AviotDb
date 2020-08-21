@@ -19,22 +19,22 @@ export default class LeasesServices {
         //Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
 
-        //if (tenantStore.TenantExists(data.TenantId) === 1){
+        if (tenantStore.TenantExists(data.TenantId) === 1){
             console.log('Ok Esiste');
             await this.ExistsLeases( await this.GetLeasesFromRawData(data.leases))
-        //}else{
+        }else{
             console.log('NON Esiste!!!');
-        //}
+        }
     }
 
 
     async GetLeasesFromRawData (raw: any) {
         let temp:ILeases
-        temp = { timestamp: raw.timestamp, mac: raw.mac, ip: raw.ip, host: raw.host, id:raw.id };
+         temp = { timestamp: raw.timestamp, mac: raw.mac, ip: raw.ip, host: raw.host, id:raw.id };
         return temp
     }
     async ExistsLeases (leases: ILeases) {
-        console.log( deviceStore.findByLeases(leases.ip,leases.mac) )
+        console.log( await deviceStore.findByLeases(leases.ip,leases.mac) )
     }
 
 }
