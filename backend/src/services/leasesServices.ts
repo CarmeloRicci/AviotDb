@@ -31,7 +31,7 @@ export default class LeasesServices {
                     }else{
                         console.log ("elemento " + i + " esiste")
                         //console.log ( await deviceStore.findByMac(leases[i].mac) )
-
+                        this.CheckIpDevices(leases[i])
                     }
 
                 }
@@ -62,7 +62,7 @@ export default class LeasesServices {
         await deviceStore.create(temp)
     }
 
-    async CheckIpDevices(leases: ILeases, TenandId: any) {
+    async CheckIpDevices(leases: ILeases) {
 
         let temp: IDevice
         temp = await deviceStore.findByMacAndIp(leases.mac, leases.ip)
