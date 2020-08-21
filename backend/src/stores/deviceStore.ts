@@ -34,7 +34,7 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
     }
 
     async create(device: IDevice) {
-        return awai tknex('Devices').insert(device).returning('*');
+        return await knex('Devices').insert(device).returning('*');
     }
 
 //     findBy(device: IDevice): any {

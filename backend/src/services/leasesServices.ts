@@ -26,7 +26,7 @@ export default class LeasesServices {
             for (let i = 0; i < leases.length; i++) {
                 if ( await this.ExistsDevices(leases[i]) == 0 ){
                         console.log ("elemento " + i + " non esiste")
-                        console.log ( this.InsertDevice(leases[i],data.TenantId) )
+                        console.log ( await this.InsertDevice(leases[i],data.TenantId) )
                     }else{
                         console.log ("elemento " + i + " esiste")
                         console.log ( await deviceStore.findByMac(leases[i].mac) )
