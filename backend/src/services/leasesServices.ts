@@ -13,16 +13,14 @@ const tenantStore = new TenantStore();
 export default class LeasesServices {
 
     async NewLeasesReceiver(data: any){
-        Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
-        console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
+        //Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
+        //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         if (tenantStore.TenantExists(data.TenantId) === 1){
             console.log('Ok Esiste');
         }else{
             console.log('NON Esiste!!!');
         }
         
-        let k:ILeases = data.leases
-        console.log(k)
         const deviceResponse = await tenantStore.findById(data.TenantId);
         console.log(deviceResponse)
 

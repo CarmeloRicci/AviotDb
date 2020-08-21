@@ -35,7 +35,7 @@ export class Utilities {
     }
 
     static log(request_data: any): any {
-        fs.appendFileSync(cfg.general.path_to_log, Date.now() + request_data + "\n");
+        fs.appendFileSync(cfg.general.path_to_log, Date.now() + " -> " + request_data + "\n");
     }
 
 
