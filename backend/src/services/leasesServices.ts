@@ -22,17 +22,15 @@ export default class LeasesServices {
         if (tenantStore.TenantExists(data.TenantId) === 1) {
             //console.log('Ok Esiste il tenent');
             let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
-            leases.forEach(function (item, index) {
-                let temp : ILeases = item
-                if (this.ExistsDevices(temp) === 0){
-                    console.log ("elemento " + index + " non esiste")
-                }else{
-                    console.log ("elemento " + index + " esiste")
+
+            for (let i = 0; i < leases.length; i++) {
+                if ( await this.ExistsDevices(leases[i]) === 0 ){
+                        console.log ("elemento " + i + " non esiste")
+                    }else{
+                        console.log ("elemento " + i + " esiste")
+                    }
+
                 }
-            });
-
-
-
 
         } else {
             //console.log('NON Esiste il tenent!!!');
