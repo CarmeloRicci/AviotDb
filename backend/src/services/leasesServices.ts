@@ -29,13 +29,8 @@ export default class LeasesServices {
 
 
     async GetLeasesFromRawData (raw: any) {
-        let temp:ILeases;
-
-        temp.timestampp = raw.timestamp ;
-        temp.mac = raw.mac;
-        temp.ip = raw.ip;
-        temp.host = raw.host;
-        temp.id = raw.id;
+        let temp:ILeases
+        temp = { timestamp: raw.timestamp, mac: raw.mac, ip: raw.ip, host: raw.host, id:raw.id };
         return temp
     }
     async ExistsLeases (leases: ILeases) {
