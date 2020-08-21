@@ -21,30 +21,35 @@ export default class LeasesServices {
 
         if (tenantStore.TenantExists(data.TenantId) === 1){
             //console.log('Ok Esiste');
-            //await this.ExistsLeases( await this.GetLeasesFromRawData(data.leases))
-            await this.RawDataToArrayLeases(data.leases)
+            let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
+            leases.forEach(function (item, index, array) {
+                console.log(item, index);
+              });
+            
+
         }else{
             //console.log('NON Esiste!!!');
-            Utilities.log('leasesRoutes error ' + data.TenantId + ' leases: ' + this.GetLeasesFromRawData(data.leases) );
+            //Utilities.log('leasesRoutes error ' + data.TenantId + ' leases: ' + this.GetLeasesFromRawData(data.leases) );
 
         }
     }
 
 
-    async GetLeasesFromRawData (raw: any) {
-        let temp:ILeases
-         temp = { timestamp: raw.timestamp, mac: raw.mac, ip: raw.ip, host: raw.host, id:raw.id };
-        return temp
-    }
+    // async GetLeasesFromArray (raw: any) {
+    //     let temp:ILeases
+    //      temp = { timestamp: raw.timestamp, mac: raw.mac, ip: raw.ip, host: raw.host, id:raw.id };
+    //     return temp
+    // }
     async RawDataToArrayLeases (raw: any) {
         let temp: ILeases[] = raw
-        console.log(temp)
+        return temp
     }
 
-    async ExistsLeases (leases: ILeases) {
-        if ( await deviceStore.findByMac(leases.mac) ){
-            return
-        }
+    async ExistsLeases (leases: ILeases[]) {
+
+        // if ( await deviceStore.findByMac(leases.mac) ){
+        //     return
+        // }
     }
 
 }
