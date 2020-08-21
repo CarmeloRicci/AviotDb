@@ -27,7 +27,7 @@ export default class LeasesServices {
             for (let i = 0; i < leases.length; i++) {
                 if ( await this.ExistsDevices(leases[i]) == 0 ){
                         console.log ("elemento " + i + " non esiste")
-                        await this.InsertDevice(leases[i],data.TenantId)
+                        await this.InsertDevice(leases[i], data.TenantId)
                         console.log("Elemento inserito")
                     }else{
                         console.log ("elemento " + i + " esiste")
