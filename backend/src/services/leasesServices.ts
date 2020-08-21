@@ -20,7 +20,7 @@ export default class LeasesServices {
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         if (tenantStore.TenantExists(data.TenantId) === 1){
             console.log('Ok Esiste');
-            this.ExistsLeases(this.GetLeasesFromRawData(data.leases))
+            this.ExistsLeases( await this.GetLeasesFromRawData(data.leases))
         }else{
             console.log('NON Esiste!!!');
         }
