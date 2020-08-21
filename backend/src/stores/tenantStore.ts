@@ -48,7 +48,7 @@ export default class TenantStore {
 
         return knex ('Tenant')
             .where ({
-                User_id: id
+                Tenant_id: id
             })
             .select ('*')
 
