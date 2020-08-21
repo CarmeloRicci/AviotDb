@@ -46,7 +46,7 @@ export default class TenantStore {
     async findById(id: number) {
         //return knex('Tenant').select('*').where({ id });
 
-        return knex ('User')
+        return knex ('Tenant')
             .where ({
                 User_id: id
             })
