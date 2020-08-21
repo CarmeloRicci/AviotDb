@@ -22,20 +22,22 @@ export default class LeasesServices {
 
         if (tenantStore.TenantExists(data.TenantId) === 1){
             console.log('Ok Esiste');
-            this.ExistsLeases( await this.GetLeasesFromRawData(data.leases))
+            this.ExistsLeases( await this.GetLeasesFromRawData(data.leases.timestamp, data.leases.mac, data.leases.ip, data.leases.host, data.leases.id))
         }else{
             console.log('NON Esiste!!!');
         }
     }
 
 
-    async GetLeasesFromRawData (raw: any) {
+    async GetLeasesFromRawData (timestamp:string, mac:string, ip:string, host:string, id:string) {
         let temp:ILeases;
-        temp.timestamp = raw.timestamp;
-        temp.mac = raw.mac;
-        temp.ip = raw.ip;
-        temp.host = raw.host;
-        temp.id = raw.id;
+
+        temp.timestamp = timestamp;
+        temp.mac = mac;
+        temp.ip = ip;
+        temp.host = host;
+        temp.id = id;
+
         return temp
     }
     async ExistsLeases (leases: ILeases) {
