@@ -4,11 +4,14 @@ const equal = require('deep-equal');
 const fs = require('fs');
 import { Utilities } from '../shared/utilities';
 import _ = require('lodash');
+import { random } from 'lodash';
 import { ILeases } from "../interfaces/interfaces";
 
 import TenantStore from '../stores/tenantStore';
-import { random } from 'lodash';
 const tenantStore = new TenantStore();
+
+import DeviceStore from '../stores/deviceStore';
+const deviceStore = new DeviceStore();
 
 export default class LeasesServices {
 
@@ -17,13 +20,10 @@ export default class LeasesServices {
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         if (tenantStore.TenantExists(data.TenantId) === 1){
             console.log('Ok Esiste');
+            this.ExistsLeases(this.GetLeasesFromRawData(data.leases))
         }else{
             console.log('NON Esiste!!!');
         }
-        
-        const deviceResponse = await tenantStore.findById(data.TenantId);
-        console.log(deviceResponse)
-
     }
 
 
@@ -36,4 +36,8 @@ export default class LeasesServices {
         temp.id = raw.id;
         return temp
     }
+    async ExistsLeases (leases: ILeases) {
+        console.log( deviceStore.findByLeases(leases.ip,leases.mac) )
+    }
+
 }

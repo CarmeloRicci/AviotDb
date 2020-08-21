@@ -1,12 +1,11 @@
-// import { IDevice, ISearchOpt } from '../interfaces/interfaces';
-// const _ = require('lodash');
-// const moment = require('moment');
-// var config = require('../../../backend/knexfile');
+import { IDevice } from '../interfaces/interfaces';
+const _ = require('lodash');
+const moment = require('moment');
+var config = require('../../../backend/knexfile');
+var knex = require('knex')(config[process.env.NODE_ENV]);
 
-// var knex = require('knex')(config[process.env.NODE_ENV]);
-
-// export default class DeviceStore {
-//     constructor() { }
+ export default class DeviceStore {
+     constructor() { }
 
 //     create(device: IDevice) {
 //         return knex('devices').insert(device).returning('*');
@@ -25,6 +24,14 @@
 //     findById(id: number): any {
 //         return knex('devices').select('*').where({ id });
 //     }
+
+    findByLeases(ip:string, mac:string): any {
+        return knex('Devices')
+            .select('*')
+            .where({ Ip: ip,
+                    Mac: mac
+             });
+    }
 
 //     findBy(device: IDevice): any {
 //         return knex('devices').where(device).returning('*');
@@ -50,4 +57,4 @@
 //                 return err;
 //             });
 //     }
-// }
+ }

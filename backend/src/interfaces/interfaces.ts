@@ -19,3 +19,11 @@ export interface ITenant {
     Application_id: number;
     Created_at: string;
 }
+
+export interface IDevice{
+    Device_id: number;
+    Tenant_id: number;
+    Nome: string;
+    Ip: string;
+    Mac: string;
+}
