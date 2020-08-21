@@ -19,7 +19,7 @@ export default class LeasesServices {
         //Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
 
-        if (tenantStore.TenantExists(data.TenantId) == 1) {
+        if (await tenantStore.TenantExists(data.TenantId) == 1) {
             //console.log('Ok Esiste il tenent');
             let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
 
