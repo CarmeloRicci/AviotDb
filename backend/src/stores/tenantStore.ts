@@ -65,4 +65,17 @@ export default class TenantStore {
     //         return err;
     //     });
     // }
+
+    /////////////////////////////// --------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    TenantExists(id: number) {
+        if( this.findById(id) ){
+            return 1
+        }
+        else {
+            return 0
+        }
+        
+    }
+
 }
