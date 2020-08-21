@@ -5,7 +5,7 @@ export interface IResultRequest {
 }
 
 export interface ILeases {
-    timestamp?: string;
+    timestamp?: any;
     mac: string;
     ip: string;
     host: string;
