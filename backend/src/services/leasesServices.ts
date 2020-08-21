@@ -68,11 +68,7 @@ export default class LeasesServices {
         let temp: IDevice
         //console.log( await deviceStore.findByMacAndIp(leases.mac, leases.ip) )
         let rowdata = await deviceStore.findByMacAndIp(leases.mac, leases.ip)
-        console.log(typeof rowdata, rowdata)
-console.log(rowdata[0].RowDataPacket)
-console.log(rowdata[0].Ip)
-//console.log(rowdata.RowDataPacket.Ip)
-//        temp = { Device_id: rowdata.Device_id , Tenant_id: rowdata.Tenant_id , Nome: rowdata.Nome , Ip: rowdata.Ip, Mac: rowdata.Mac}
+        temp = { Device_id: rowdata[0].Device_id , Tenant_id: rowdata[0].Tenant_id , Nome: rowdata[0].Nome , Ip: rowdata[0].Ip, Mac: rowdata[0].Mac}
         
     console.log("->>>>" + temp)
         // temp={Device_id: 0, Tenant_id: TenandId, Nome: leases.host, Ip: leases.ip, Mac: leases.mac}
