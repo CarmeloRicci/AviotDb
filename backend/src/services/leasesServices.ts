@@ -65,6 +65,7 @@ export default class LeasesServices {
     async CheckIpDevices(leases: ILeases) {
 
         let temp: IDevice
+        console.log( await deviceStore.findByMacAndIp(leases.mac, leases.ip) )
         temp = await deviceStore.findByMacAndIp(leases.mac, leases.ip)
 
 console.log("->>>>" + temp.Device_id + temp.Ip + temp.Mac)
