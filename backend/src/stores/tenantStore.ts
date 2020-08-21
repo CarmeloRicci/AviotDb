@@ -34,8 +34,8 @@ export default class TenantStore {
     //     return knex('Tenant').where({ id }).del();
     // }
 
-    findById(id: number) {
-        return knex('Tenant')
+    async findById(id: number) {
+        return await knex('Tenant')
             .where({
                 Tenant_id: id
             })
@@ -68,8 +68,9 @@ export default class TenantStore {
 
     /////////////////////////////// --------------------------------- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
-    TenantExists(id: number) {
-        if( this.findById(id) ){
+    async TenantExists(id: number) {
+        let status = await this.findById(id)
+        if( status.length > 0 && status ){
             return 1
         }
         else {
