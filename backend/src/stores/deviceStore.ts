@@ -27,7 +27,7 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
 //     }
 
     findByLeases(ip:string, mac:any) {
-        return knex('Device')
+        return knex('Devices')
             .where({ Ip: ip
              })
              .select('*')
