@@ -1,6 +1,6 @@
 import { IDevice } from '../interfaces/interfaces';
 const _ = require('lodash');
-const moment = require('moment');
+// const moment = require('moment');
 var config = require('../../../backend/knexfile');
 var knex = require('knex')(config[process.env.NODE_ENV]);
 
