@@ -4,6 +4,7 @@ const _ = require('lodash');
 var config = require('../../../backend/knexfile');
 var knex = require('knex')(config[process.env.NODE_ENV]);
 
+
  export default class DeviceStore {
      constructor() { }
 
@@ -25,7 +26,7 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
 //         return knex('devices').select('*').where({ id });
 //     }
 
-    findByLeases(ip:string, mac:string): any {
+    findByLeases(ip:any, mac:any) {
         return knex('Devices')
             .where({ Device_id: 1
              })
