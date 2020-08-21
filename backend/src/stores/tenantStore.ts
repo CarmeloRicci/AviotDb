@@ -19,9 +19,10 @@ const knex = require('knex')(config[process.env.NODE_ENV]);
 export default class TenantStore {
     constructor() { }
 
-    // create(tenant: ITenant) {
-    //     return knex('Tenant').insert(tenant);
-    // }
+    create(tenant: ITenant) {
+        return knex('Tenant')
+            .insert(tenant);
+    }
 
     // update(tenant: ITenant) {
     //     //const date = new Date(moment().format()).toISOString();
@@ -33,38 +34,12 @@ export default class TenantStore {
     //     return knex('Tenant').where({ id }).del();
     // }
 
-    // melo1 (){
-    //     return knex ('User') 
-    //     .where ({ 
-    //       User_id: 1 
-    //     }) 
-    //     .select ('*')
-    // }
-
-
-
-    async findById(id: number) {
-        //return knex('Tenant').select('*').where({ id });
-
-        return knex ('Tenant')
-            .where ({
+    findById(id: number) {
+        return knex('Tenant')
+            .where({
                 Tenant_id: id
             })
-            .select ('*')
-
-
-        // await knex.from('Tenant').select("*")
-        //     .then((rows:any) => {
-        //          for (let row of rows) {
-        //              console.log(`${row['Tenant_id']} ${row['Name']} ${row['Description']} ${row['Application_id']} ${row['Created_at']}`);
-        //             //console.log(`${row}`);
-        //         }
-        //     }).catch((err: any) => { console.log(err); throw err })
-        //     .finally(() => {
-        //          knex.destroy();
-        //     });
-
-        //     return "fine";
+            .select('*')
     }
 
     // findBy(tenant: ITenant): any {

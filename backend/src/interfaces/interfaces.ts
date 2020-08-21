@@ -4,7 +4,7 @@ export interface IResultRequest {
     success: boolean;
 }
 
-export interface FormatLeases {
+export interface ILeases {
     timestamp: string;
     mac: string;
     ip: string;
