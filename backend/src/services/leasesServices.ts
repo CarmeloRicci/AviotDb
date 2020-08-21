@@ -12,7 +12,7 @@ const tenantStore = new TenantStore();
 export default class LeasesServices {
 
     async NewLeasesReceiver(data: any){
-        console.log('leasesServices received from ' + data.TenantId + ' leases: ' + data.leases)
+        //console.log('leasesServices received from ' + data.TenantId + ' leases: ' + data.leases)
         //let exists = tenantStore.findById(1)
 
         await tenantStore.melo1();
