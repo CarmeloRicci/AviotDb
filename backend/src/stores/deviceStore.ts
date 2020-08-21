@@ -34,7 +34,15 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
     }
 
     async create(device: IDevice) {
-        return await knex('Devices').insert(device).returning('*');
+        return await knex('Devices').insert(device)
+    }
+
+    async findByMacAndIp(mac:string, ip: string) {
+        return await knex('Devices')
+            .where({ Mac: mac,
+                    Ip: ip
+             })
+             .select('*')
     }
 
 //     findBy(device: IDevice): any {
