@@ -49,6 +49,10 @@ export default class DeviceStore {
             .select('*')
     }
 
+    async update(device: IDevice) {
+        return knex('devices').where({ id: device.Device_id }).update(device)
+    }
+
     //     findBy(device: IDevice): any {
     //         return knex('devices').where(device).returning('*');
     //     }

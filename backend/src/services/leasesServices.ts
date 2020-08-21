@@ -63,15 +63,26 @@ export default class LeasesServices {
         await deviceStore.create(temp)
     }
 
+    async UpdateIpDevice(dev: IDevice, newip: string) {
+        let temp: IDevice
+        temp={Device_id: 0, Tenant_id: dev.Device_id, Nome: dev.Nome, Ip: newip, Mac: dev.Mac}
+        await deviceStore.update(temp)
+    }
+
     async CheckIpDevices(leases: ILeases) {
 
         let temp: IDevice
-        //console.log( await deviceStore.findByMacAndIp(leases.mac, leases.ip) )
-        let rowdata = await deviceStore.findByMacAndIp(leases.mac, leases.ip)
+        let rowdata = await deviceStore.findByMac(leases.mac)
+        console.log(rowdata)
         temp = { Device_id: rowdata[0].Device_id , Tenant_id: rowdata[0].Tenant_id , Nome: rowdata[0].Nome , Ip: rowdata[0].Ip, Mac: rowdata[0].Mac}
-        console.log("->>>>" + temp.Device_id + temp.Ip)
-        // temp={Device_id: 0, Tenant_id: TenandId, Nome: leases.host, Ip: leases.ip, Mac: leases.mac}
-        // await deviceStore.create(temp)
+        console.log(temp)
+        if (leases.ip == temp.Ip){
+            console.log("Dispositivo già presente, passo oltre")
+        }
+        else{
+            console.log("Il Dispositivo ha un nuovo indirizzo ip, prendo il vecchio hostname e lo metto in quello nuovo")
+            this.UpdateIpDevice(temp,leases.ip)
+        }
     }
 
 
