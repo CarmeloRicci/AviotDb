@@ -26,10 +26,10 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
 //         return knex('devices').select('*').where({ id });
 //     }
 
-    findByLeases(ip:any, mac:any) {
-        return knex('Tenant')
-            // .where({ Device_id: "1"
-            //  })
+    findByLeases(ip:string, mac:any) {
+        return knex('Device')
+            .where({ Ip: ip
+             })
              .select('*')
     }
 
