@@ -15,19 +15,23 @@ const deviceStore = new DeviceStore();
 
 export default class LeasesServices {
 
-    async NewLeasesReceiver(data: any){
+    async NewLeasesReceiver(data: any) {
         //Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
 
-        if (tenantStore.TenantExists(data.TenantId) === 1){
+        if (tenantStore.TenantExists(data.TenantId) === 1) {
             //console.log('Ok Esiste');
             let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
-            leases.forEach(function (item, index, array) {
-                console.log(item, index);
-              });
-            
+            leases.forEach(function (item, index) {
+                if (this.ExistsDevices(item) === 0){
+                    console.log ("elemento " + index + " non esiste")
+                }else{
+                    console.log ("elemento " + index + " esiste")
+                }
+            });
 
-        }else{
+
+        } else {
             //console.log('NON Esiste!!!');
             //Utilities.log('leasesRoutes error ' + data.TenantId + ' leases: ' + this.GetLeasesFromRawData(data.leases) );
 
@@ -40,16 +44,18 @@ export default class LeasesServices {
     //      temp = { timestamp: raw.timestamp, mac: raw.mac, ip: raw.ip, host: raw.host, id:raw.id };
     //     return temp
     // }
-    async RawDataToArrayLeases (raw: any) {
+    async RawDataToArrayLeases(raw: any) {
         let temp: ILeases[] = raw
         return temp
     }
 
-    async ExistsLeases (leases: ILeases[]) {
+    async ExistsDevices(leases: ILeases) {
 
-        // if ( await deviceStore.findByMac(leases.mac) ){
-        //     return
-        // }
+        if (await deviceStore.findByMac(leases.mac)) {
+            return await deviceStore.findByMac(leases.mac)
+        } else {
+            return 0
+        }
     }
 
 }
