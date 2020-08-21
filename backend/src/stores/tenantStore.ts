@@ -71,8 +71,7 @@ export default class TenantStore {
 
     async TenantExists(id: number) {
         let status = await this.findById(id)
-        console.log(status + " --> " + status.length)
-        if( status ){
+        if( status.length === 1 ){
             return 1
         }
         else {
