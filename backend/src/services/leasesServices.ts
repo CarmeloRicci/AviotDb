@@ -31,7 +31,7 @@ export default class LeasesServices {
     async GetLeasesFromRawData (raw: any) {
         let temp:ILeases;
 
-        temp.timestamp = raw.timestamp;
+        temp.timestamp = "sdsd" ;
         temp.mac = raw.mac;
         temp.ip = raw.ip;
         temp.host = raw.host;
