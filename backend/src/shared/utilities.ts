@@ -1,6 +1,7 @@
 import { IResultRequest } from "../interfaces/interfaces";
-
+const fs = require('fs');
 const request = require('request');
+const cfg = require('config');
 
 export class Utilities {
     // metodo che prende in ingresso le configurazioni relative ad una richiesta (url, method, etc)
@@ -32,4 +33,13 @@ export class Utilities {
             );
         });
     }
+
+    static log(request_data: any): any {
+        fs.appendFileSync(cfg.general.path_to_log, Date.now() + request_data + "\n");
+    }
+
+
+
+
+
 }

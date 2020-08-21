@@ -16,6 +16,7 @@ module.exports = {
   general: {
     ipDnsServer: "10.10.0.1",
     tenant_id: "Agri01",
-    ipIpDb: "127.0.0.1"
+    ipIpDb: "127.0.0.1",
+    path_to_log: "/roo/log.txt"
   }
 };
