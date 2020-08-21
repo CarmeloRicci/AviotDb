@@ -26,10 +26,9 @@ var knex = require('knex')(config[process.env.NODE_ENV]);
 //         return knex('devices').select('*').where({ id });
 //     }
 
-    async findByLeases(ip:string, mac:string) {
+    async findByMac(mac:string) {
         return await knex('Devices')
-            .where({ Ip: ip,
-                    Mac: mac
+            .where({ Mac: mac
              })
              .select('*')
     }
