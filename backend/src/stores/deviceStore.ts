@@ -26,6 +26,11 @@ export default class DeviceStore {
     //         return knex('devices').select('*').where({ id });
     //     }
 
+    async getAllElements() {
+        return await knex('Devices')
+            .select('*')
+    }
+
     async findByMac(mac: string) {
         return await knex('Devices')
             .where({

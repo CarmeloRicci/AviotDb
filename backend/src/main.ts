@@ -9,6 +9,9 @@ app.use(bodyParser.json());
 const pubApiLeasesRoute = require('./routes/leasesRoutes');
 app.use('/leases', pubApiLeasesRoute);
 
+const pubApiFrontendRoute = require('./routes/frontendRoutes');
+app.use('/frontend', pubApiFrontendRoute);
+
 app.listen(3900, () => {
   console.log('Application listening on port 3900!');
 });

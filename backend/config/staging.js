@@ -19,6 +19,7 @@ module.exports = {
     ipIpDb: "127.0.0.1",
     path_to_log: "/root/log.txt",
     path_to_log_ok: "/root/log_ok.txt",
-    path_to_log_err: "/root/log_err.txt"
+    path_to_log_err: "/root/log_err.txt", 
+    ipFrontend: "127.19.0.5"
   }
 };
