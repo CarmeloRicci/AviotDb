@@ -70,7 +70,7 @@ export default class FrontendServices {
                     json: true
                 };
                 await Utilities.request(request_data);
-                console.log("DnsService - SendPostResponse: Post send! " + `(http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host)`)
+                console.log("FrontendServices - SendNewRolesAtDnsServerApp: Post send! " + `(http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host)`)
     }
 
 
