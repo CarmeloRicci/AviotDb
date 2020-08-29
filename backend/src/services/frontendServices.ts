@@ -47,7 +47,6 @@ export default class FrontendServices {
             await deviceStore.update(data.Mac,data.NewHostName)
             await this.SendNewRolesAtDnsServerApp(data.Mac,data.NewHostName)
             console.log("hostname aggiornato")
-
         }
         else {
             console.log("FrontendServices: Dispositivo non Trovato, controlla il Mac Address")
