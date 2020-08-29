@@ -59,7 +59,7 @@ export default class FrontendServices {
 
     async SendNewRolesAtDnsServerApp(mac: string, hostName: string) {
         let request_data = {
-                    url: `http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host`,
+                    url: `http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh`,
                     method: 'POST',
                     body: {
                         params: {
@@ -70,7 +70,7 @@ export default class FrontendServices {
                     json: true
                 };
                 await Utilities.request(request_data);
-                await console.log("FrontendServices - SendNewRolesAtDnsServerApp: Post send! " + `(http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host)`)
+                await console.log("FrontendServices - SendNewRolesAtDnsServerApp: Post send! " + `(http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh)`)
     }
 
 
