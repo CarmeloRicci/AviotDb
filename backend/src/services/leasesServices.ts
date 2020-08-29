@@ -20,28 +20,24 @@ export default class LeasesServices {
         //Utilities.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
         //console.log('leasesServices received from ' + data.TenantId + ' leases: '+ this.GetLeasesFromRawData(data.leases))
 
-        if (await tenantStore.TenantExists(data.TenantId) === 1) {
+
             //console.log('Ok Esiste il tenent');
             let leases: ILeases[] = await this.RawDataToArrayLeases(data.leases)
 
             for (let i = 0; i < leases.length; i++) {
                 if ( await this.ExistsDevices(leases[i]) == 0 ){
                         console.log ("elemento " + i + " non esiste")
-                        await this.InsertDevice(leases[i], data.TenantId)
+                        await this.InsertDevice(leases[i])
                         console.log("Elemento inserito")
                     }else{
                         console.log ("elemento " + i + " esiste")
                         //console.log ( await deviceStore.findByMac(leases[i].mac) )
-                        this.CheckIpDevices(leases[i])
+                        //this.CheckMacDevices(leases[i])
                     }
 
                 }
 
-        } else {
-            //console.log('NON Esiste il tenent!!!');
-            //Utilities.log('leasesRoutes error ' + data.TenantId + ' leases: ' + this.GetLeasesFromRawData(data.leases) );
 
-        }
     }
 
     async RawDataToArrayLeases(raw: any) {
@@ -57,31 +53,33 @@ export default class LeasesServices {
         }
     }
 
-    async InsertDevice(leases: ILeases, TenandId: any) {
+    async InsertDevice(leases: ILeases) {
         let temp: IDevice
-        temp={Device_id: 0, Tenant_id: TenandId, Nome: leases.host, Ip: leases.ip, Mac: leases.mac}
+        temp={Device_id: 0, Mac: leases.mac, Default_Name: leases.host, Current_Name: "", Created_at: "---", Updated_at: "---"}
         await deviceStore.create(temp)
     }
 
-    async UpdateIpDevice(dev: IDevice, newip: string) {
-        let temp: IDevice
-        temp={Device_id: 0, Tenant_id: dev.Device_id, Nome: dev.Nome, Ip: newip, Mac: dev.Mac}
-        await deviceStore.update(temp)
-    }
+    // async UpdateIpDevice(dev: IDevice, newip: string) {
+    //     let temp: IDevice
+    //     temp={Device_id: 0, Mac: leases.mac, Default_Name: leases.host, Current_Name: "", Created_at: "---", Updated_at: "---"}
+    //     temp={Device_id: 0, Tenant_id: dev.Device_id, Nome: dev.Nome, Ip: newip, Mac: dev.Mac}
+    //     await deviceStore.update(temp)
+    // }
 
-    async CheckIpDevices(leases: ILeases) {
+    // async CheckMacDevices(leases: ILeases) {
 
-        let temp: IDevice
-        let rowdata = await deviceStore.findByMac(leases.mac)
-        temp = { Device_id: rowdata[0].Device_id , Tenant_id: rowdata[0].Tenant_id , Nome: rowdata[0].Nome , Ip: rowdata[0].Ip, Mac: rowdata[0].Mac}
-        if (leases.ip == temp.Ip){
-            console.log("Dispositivo già presente, passo oltre")
-        }
-        else{
-            console.log("Il Dispositivo ha un nuovo indirizzo ip, prendo il vecchio hostname e lo metto in quello nuovo")
-            await this.UpdateIpDevice(temp,leases.ip)
-        }
-    }
+    //     let temp: IDevice
+    //     let rowdata = await deviceStore.findByMac(leases.mac)
+    //     temp={Device_id: rowdata[0].Device_id, Mac: rowdata[0].Mac, Default_Name: rowdata[0].Default_Name, Current_Name: rowdata[0].Current_Name, Created_at: rowdata[0].Created_at, Updated_at:rowdata[0].Updated_at}
+    //     // temp = { Device_id: rowdata[0].Device_id , Tenant_id: rowdata[0].Tenant_id , Nome: rowdata[0].Nome , Ip: rowdata[0].Ip, Mac: rowdata[0].Mac}
+    //     if (leases. == temp.Ip){
+    //         console.log("Dispositivo già presente, passo oltre")
+    //     }
+    //     else{
+    //         console.log("Il Dispositivo ha un nuovo indirizzo ip, prendo il vecchio hostname e lo metto in quello nuovo")
+    //         await this.UpdateIpDevice(temp,leases.ip)
+    //     }
+    // }
 
 
 

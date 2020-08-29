@@ -16,24 +16,62 @@ const deviceStore = new DeviceStore();
 
 export default class FrontendServices {
 
-    async GetAllElements(){
+    // async GetAllElements() {
+    //     let rowdata = await deviceStore.getAllElements();
+    //     await this.SendPostAllElements(rowdata);
+    // }
+
+    // async SendPostAllElements(data: any) {
+    //     let request_data = {
+    //         url: `http://${cfg.general.ipFrontend}:5000/frontend/allElements`,
+    //         method: 'POST',
+    //         body: {
+    //             params: {
+    //                 elements: data
+    //             }
+    //         },
+    //         json: true
+    //     };
+    //     await Utilities.request(request_data);
+    //     console.log("DnsService - SendPostResponse: Post send! " + `(http://${cfg.general.ipFrontend}:5000/frontend/allElements)`)
+    // }
+
+
+    async NewElements(data: any) {
+
+        let temp: IDevice
         let rowdata = await deviceStore.getAllElements();
-        await this.SendPostAllElements(rowdata);
+        temp = { Device_id: rowdata[0].Device_id, Mac: rowdata[0].Mac, Default_Name: rowdata[0].Default_Name, Current_Name: rowdata[0].Current_Name, Created_at: rowdata[0].Created_at, Updated_at: rowdata[0].Updated_at }
+        if (data.Mac == temp.Mac) {
+            console.log("Dispositivo già presente, Aggirono l'hostname")
+            await deviceStore.update(data.Mac,data.NewHostName)
+            await this.SendNewRolesAtDnsServerApp(data.Mac,data.NewHostName)
+
+        }
+        else {
+            console.log("FrontendServices: Dispositivo non Trovato, controlla il Mac Address")
+            return "Dispositivo non Trovato, controlla il Mac Address"
+            // console.log("Il Dispositivo ha un nuovo indirizzo ip, prendo il vecchio hostname e lo metto in quello nuovo")
+            // await this.UpdateIpDevice(temp, leases.ip)
+        }
+
     }
 
-    async SendPostAllElements(data: any) {
+    async SendNewRolesAtDnsServerApp(mac: string, hostName: string) {
         let request_data = {
-            url: `http://${cfg.general.ipFrontend}:5000/frontend/allElements`,
-            method: 'POST',
-            body: {
-                params: {
-                    elements: data
-                }
-            },
-            json: true
-        };
-        await Utilities.request(request_data);
-        console.log("DnsService - SendPostResponse: Post send! " + `(http://${cfg.general.ipFrontend}:5000/frontend/allElements)`)
+                    url: `http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host`,
+                    method: 'POST',
+                    body: {
+                        params: {
+                            Mac: mac,
+                            HostName: hostName
+                        }
+                    },
+                    json: true
+                };
+                await Utilities.request(request_data);
+                console.log("DnsService - SendPostResponse: Post send! " + `(http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host)`)
     }
+
 
 }

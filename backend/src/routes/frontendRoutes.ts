@@ -37,7 +37,7 @@ router.post('/newElements', async (req, res) => {
         console.log("frontendRoutes received("+ip+"): ","PARAMS", params);
         Utilities.log("frontendRoutes received("+ip+"): " + "PARAMS " + params);
         
-        frontendService.GetAllElements();
+        frontendService.NewElements(params.device);
 
         res.status(HttpStatus.OK).send();
     } catch (error) {

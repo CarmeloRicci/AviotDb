@@ -23,8 +23,9 @@ export interface ITenant {
 
 export interface IDevice{
     Device_id: number;
-    Tenant_id: number;
-    Nome: string;
-    Ip: string;
     Mac: string;
+    Default_Name: string;
+    Current_Name: string;
+    Created_at: string;
+    Updated_at: string;
 }

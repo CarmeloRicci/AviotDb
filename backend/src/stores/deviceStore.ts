@@ -43,22 +43,22 @@ export default class DeviceStore {
         return await knex('Devices').insert(device)
     }
 
-    async findByMacAndIp(mac: string, ip: string) {
-        return await knex('Devices')
-            .where({
-                Mac: mac
-            })
-            .where({
-                Ip: ip
-            })
-            .select('*')
-    }
+    // async findByMacAndIp(mac: string, ip: string) {
+    //     return await knex('Devices')
+    //         .where({
+    //             Mac: mac
+    //         })
+    //         .where({
+    //             Ip: ip
+    //         })
+    //         .select('*')
+    // }
 
-    async update(device: IDevice) {
+    async update(mac: string, hostName: string) {
         return await knex('Devices')
-            .where({ Mac: device.Mac
+            .where({ Mac: mac
             })
-            .update({Ip: device.Ip})
+            .update({Current_Name: hostName})
     }
 
     //     findBy(device: IDevice): any {
