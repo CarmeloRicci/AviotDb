@@ -46,6 +46,7 @@ export default class FrontendServices {
             console.log("Dispositivo già presente, Aggirono l'hostname")
             await deviceStore.update(data.Mac,data.NewHostName)
             await this.SendNewRolesAtDnsServerApp(data.Mac,data.NewHostName)
+            console.log("hostname aggiornato")
 
         }
         else {
@@ -70,8 +71,9 @@ export default class FrontendServices {
                     json: true
                 };
                 await Utilities.request(request_data);
-                console.log("FrontendServices - SendNewRolesAtDnsServerApp: Post send! " + `(http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host)`)
+                await console.log("FrontendServices - SendNewRolesAtDnsServerApp: Post send! " + `(http://${cfg.general.ipDnsServerApp}:${cfg.general.portDnsServerApp}/host/refresh_host)`)
     }
+
 
 
 }
