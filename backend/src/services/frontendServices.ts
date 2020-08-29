@@ -23,7 +23,7 @@ export default class FrontendServices {
 
     async SendPostAllElements(data: any) {
         let request_data = {
-            url: `http://${cfg.general.ipFrontend}:5000/frontend/allelements`,
+            url: `http://${cfg.general.ipFrontend}:5000/frontend/allElements`,
             method: 'POST',
             body: {
                 params: {
@@ -33,7 +33,7 @@ export default class FrontendServices {
             json: true
         };
         await Utilities.request(request_data);
-        console.log("DnsService - SendPostResponse: Post send! " + `(http://${cfg.general.ipFrontend}:5000/frontend/allelements)`)
+        console.log("DnsService - SendPostResponse: Post send! " + `(http://${cfg.general.ipFrontend}:5000/frontend/allElements)`)
     }
 
 }
