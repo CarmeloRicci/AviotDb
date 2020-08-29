@@ -40,7 +40,7 @@ export default class FrontendServices {
     async NewElements(data: any) {
 
         let temp: IDevice
-        let rowdata = await deviceStore.getAllElements();
+        let rowdata = await deviceStore.findByMac(data.Mac);
         temp = { Device_id: rowdata[0].Device_id, Mac: rowdata[0].Mac, Default_Name: rowdata[0].Default_Name, Current_Name: rowdata[0].Current_Name, Created_at: rowdata[0].Created_at, Updated_at: rowdata[0].Updated_at }
         if (data.Mac == temp.Mac) {
             console.log("Dispositivo già presente, Aggirono l'hostname")
