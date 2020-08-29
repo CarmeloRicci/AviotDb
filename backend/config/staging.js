@@ -22,6 +22,7 @@ module.exports = {
     path_to_log_err: "/root/log_err.txt", 
     ipFrontend: "127.19.0.5",
     ipDnsServerApp: "127.19.0.6",
-    portDnsServerApp: "3900"
+    portDnsServerApp: "3900",
+    portFrontend: "4100"
   }
 };

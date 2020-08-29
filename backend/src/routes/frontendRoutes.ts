@@ -9,7 +9,27 @@ import { Utilities } from '../shared/utilities';
 import FrontendService from '../services/frontendServices';
 const frontendService = new FrontendService();
 
-router.post('/getallelements', async (req, res) => {
+
+import DeviceStore from '../stores/deviceStore';
+const deviceStore = new DeviceStore();
+
+router.post('/getAllElements', async (req, res) => {
+    const body = req.body;
+    var ip = req.connection.remoteAddress.split(":")[((req.connection.remoteAddress.split(":")).length)-1]
+    try {
+        const params = body && body.params ? body.params : null;
+        console.log("frontendRoutes received("+ip+"): ","PARAMS", params);
+        Utilities.log("frontendRoutes received("+ip+"): " + "PARAMS " + params);
+        
+        //frontendService.GetAllElements();
+        let rowdata = await deviceStore.getAllElements();
+        res.status(HttpStatus.OK).send(rowdata);
+    } catch (error) {
+        res.status(HttpStatus.OK).send(error);
+    }
+});
+
+router.post('/newElements', async (req, res) => {
     const body = req.body;
     var ip = req.connection.remoteAddress.split(":")[((req.connection.remoteAddress.split(":")).length)-1]
     try {
