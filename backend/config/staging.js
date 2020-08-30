@@ -20,8 +20,8 @@ module.exports = {
     path_to_log: "/root/log.txt",
     path_to_log_ok: "/root/log_ok.txt",
     path_to_log_err: "/root/log_err.txt", 
-    ipFrontend: "127.19.0.5",
-    ipDnsServerApp: "127.19.0.6",
+    ipFrontend: "172.19.0.5",
+    ipDnsServerApp: "172.19.0.6",
     portDnsServerApp: "3900",
     portFrontend: "4100"
   }
