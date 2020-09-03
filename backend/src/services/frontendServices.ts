@@ -59,6 +59,7 @@ export default class FrontendServices {
             }
         } catch (error) {
             console.log("FrontendServices: Dispositivo non Trovato, controlla il Mac Address")
+            return "Dispositivo non Trovato, controlla il Mac Address"
         }
     }
 
