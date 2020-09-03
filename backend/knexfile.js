@@ -2,25 +2,27 @@ const config = require("config");
 const path = require("path");
 
 module.exports = {
-  
+
   development: {
     client: 'mysql',
     connection: {
-        host: '172.19.0.2',
-        user: 'melo',
-        password: 'melo',
-        database: 'Aviot'
+      host: config.general.ipIpDb,
+      //host: '172.19.0.2',
+      user: 'melo',
+      password: 'melo',
+      database: 'Aviot'
     },
     useNullAsDefault: true
   },
-  
+
   staging: {
     client: 'mysql',
     connection: {
-        host: '172.19.0.2',
-        user: 'melo',
-        password: 'melo',
-        database: 'Aviot'
+      host: config.general.ipIpDb,
+      //host: '172.19.0.2',
+      user: 'melo',
+      password: 'melo',
+      database: 'Aviot'
     },
     useNullAsDefault: true
   },
@@ -28,17 +30,18 @@ module.exports = {
   production: {
     client: 'mysql',
     connection: {
-        host: '172.19.0.2',
-        user: 'melo',
-        password: 'melo',
-        database: 'Aviot'
+      host: config.general.ipIpDb,
+      //host: '172.19.0.2',
+      user: 'melo',
+      password: 'melo',
+      database: 'Aviot'
     },
     useNullAsDefault: true
   }
 };
 
 // module.exports = {
-  
+
 //   development: {
 //     client: "sqlite3",
 //     connection: {
@@ -53,7 +56,7 @@ module.exports = {
 //     },
 //     useNullAsDefault: true
 //   },
-  
+
 //   staging: {
 //     client: "sqlite3",
 //     connection: {
