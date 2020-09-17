@@ -13,13 +13,13 @@ const frontendService = new FrontendService();
 import DeviceStore from '../stores/deviceStore';
 const deviceStore = new DeviceStore();
 
-router.post('/getAllElements', async (req, res) => {
+router.get('/getAllElements', async (req, res) => {
     const body = req.body;
     var ip = req.connection.remoteAddress.split(":")[((req.connection.remoteAddress.split(":")).length)-1]
     try {
         const params = body && body.params ? body.params : null;
-        console.log("frontendRoutes received("+ip+"): ","PARAMS", params);
-        Utilities.log("frontendRoutes received("+ip+"): " + "PARAMS " + params);
+        console.log("frontendRoutes received("+ip+") ");
+        Utilities.log("frontendRoutes received("+ip+") ");
         
         //frontendService.GetAllElements();
         let rowdata = await deviceStore.getAllElements();
