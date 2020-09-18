@@ -13,7 +13,7 @@ const frontendService = new FrontendService();
 import DeviceStore from '../stores/deviceStore';
 const deviceStore = new DeviceStore();
 
-router.get('/getAllElements', async (req, res) => {
+router.get('/getAllDevices', async (req, res) => {
     const body = req.body;
     var ip = req.connection.remoteAddress.split(":")[((req.connection.remoteAddress.split(":")).length)-1]
     try {
@@ -29,7 +29,7 @@ router.get('/getAllElements', async (req, res) => {
     }
 });
 
-router.post('/newElements', async (req, res) => {
+router.post('/configureDevice', async (req, res) => {
     const body = req.body;
     var ip = req.connection.remoteAddress.split(":")[((req.connection.remoteAddress.split(":")).length)-1]
     try {
